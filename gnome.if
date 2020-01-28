@@ -601,6 +601,24 @@ interface(`gnome_manage_generic_cache_files',`
 
 ########################################
 ## <summary>
+##     Map generic cache home files (.cache)
+## </summary>
+## <param name="domain">
+##     <summary>
+##     Domain allowed access.
+##     </summary>
+## </param>
+#
+interface(`gnome_map_generic_cache_files',`
+       gen_require(`
+               type cache_home_t;
+       ')
+
+       allow $1 cache_home_t:file map;
+')
+
+########################################
+## <summary>
 ##	Delete to generic cache home files (.cache)
 ## </summary>
 ## <param name="domain">
@@ -1872,7 +1890,7 @@ gen_require(`
 ## </summary>
 ## <desc>
 ##  <p>
-##  Execute a gnome-keyring executable
+##  Execute a telepathy executable
 ##  in the specified domain.  This allows
 ##  the specified domain to execute any file
 ##  on these filesystems in the specified
